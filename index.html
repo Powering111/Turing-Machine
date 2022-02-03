@@ -5,74 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>튜링 머신</title>
-    <style>
-        canvas{
-            border:2px solid black;
-            width:100%;
-            height:100px;
-        }
-        nav{
-            margin:10px 0px;
-            padding:5px;
-            background-color:antiquewhite;
-        }
-        button{
-            outline:none;
-            border:none;
-            background-color:rgb(131, 224, 247);
-            padding:5px 20px;
-            font-size:1.2em;
-            transition:background-color 0.1s;
-        }
-        button:hover{
-            background-color:rgb(73, 203, 255);
-        }
-        button:active{
-            background-color:rgb(70, 173, 214);
-        }
-
-        .box{
-            width:500px;
-            border:2px solid aqua;
-            border-radius:3px;
-            padding:10px;
-
-        }
-        #ruleset{
-            list-style:none;
-            padding:0;    
-        }
-        .rule{
-            width:100%;
-            display:flex;
-            flex-direction:row;
-            justify-content:space-around;
-        }
-        .rule div{
-            font-family:'Nanum Gothic';
-            text-align:center;
-            width:50px;
-            background-color:mediumaquamarine;
-            border-radius:5px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <button onclick="previousStep(event)">PREV</button>
+        <button onclick="resetStep(event)">PREV</button>
         <button onclick="nextStep(event)">NEXT</button>
+        <input type="range" min="0" max="100" value="0" step="0.05" onmousemove="view.offset=Number(event.target.value);update();">
     </nav>
-    <canvas id="display" width="100" height="100"></canvas>
+    <canvas id="display"></canvas>
     <div class="box">
         <h3>규칙</h3>
         <div>
             <div>
                 <button onclick="addRule(event)">+</button>
                 <button onclick="deleteRule(event)">-</button>
-                <button onclick="updateRuleUI(event)">r</button>
+                <button onclick="clearRule(event)">r</button>
             </div>
+            <div style="display:flex;justify-content: space-around;"><span>현재문자</span><span>상태</span><span>쓸 문자</span><span>이동방향</span><span>바뀔상태</span></div>
             <ul id="ruleset" onclick="ruleClicked(event)">
-                <li class="rule"><div>0</div><div>0</div><div>0</div><div>0</div></li>
             </ul>
         </div>
     </div>

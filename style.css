@@ -1,0 +1,65 @@
+canvas{
+    border:2px solid black;
+    width:100%;
+    height:100px;
+    margin:0;
+}
+nav{
+    margin:10px 0px;
+    padding:5px;
+    background-color:antiquewhite;
+}
+button{
+    outline:none;
+    border:none;
+    background-color:rgb(131, 224, 247);
+    padding:5px 20px;
+    font-size:1.2em;
+    transition:background-color 0.1s;
+}
+button:hover{
+    background-color:rgb(73, 203, 255);
+}
+button:active{
+    background-color:rgb(70, 173, 214);
+}
+
+.box{
+    width:500px;
+    border:2px solid aqua;
+    border-radius:3px;
+    padding:10px;
+
+}
+#ruleset{
+    list-style:none;
+    padding:0;    
+}
+.rule{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    transition:background-color 0.05s;
+}
+.rule.selected{
+    background-color:rgb(237, 255, 228);
+}
+.rule input{
+    background-color:transparent;
+    font-family:'Nanum Gothic';
+    text-align:center;
+    width:50px;
+    border:none;
+    outline:none;
+    padding:5px;
+    border-color:#ffffff0c;
+    border-radius:5px;
+    font-size:1.4em;
+    transition:background-color 0.3s, border-color 0.3s;
+}
+.rule input:focus{
+    border:2px solid rgb(255, 255, 255);
+    box-shadow:0 0 10px 3px black white;
+    background-color:rgb(230, 255, 254);
+}

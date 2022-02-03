@@ -7,24 +7,22 @@ function previousStep(){
 }
 
 class turingMachine{
-    constructor(tape){
+    constructor(tape,ruleset){
         this.index=0;
-        this.ruleset=new Array();
+        this.ruleset=ruleset;
         this.tape=tape;
         this.state=0;
     }
 
-    updateRule(ruleset){
-        this.ruleset=ruleset;
-    }
-
     next(n=1){
         for(let s = 0; s<n; s++){
-            const tapevalue = this.tape[this.index];
+            const tapevalue = this.tape[this.index] || 0;
             for(let k of this.ruleset){
+                console.log(k);
                 if(k.read===tapevalue && k.state===this.state){
-                    tapevalue=k.write;
-                    this.index+=this.move;
+                    this.tape[this.index]=k.write;
+                    this.index+=k.move;
+                    this.state=k.gostate;
                     break;
                 }
             }
@@ -33,10 +31,11 @@ class turingMachine{
 }
 
 class rule{
-    constructor(read,state,write,move){
+    constructor(read,state,write,move,gostate){
         this.read=read;
         this.state=state;
         this.write=write;
         this.move=move;
+        this.gostate=gostate;
     }
 }
