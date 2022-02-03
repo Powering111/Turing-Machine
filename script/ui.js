@@ -1,3 +1,24 @@
+function debounce(callback, limit = 100) {
+    let timeout
+    return function(...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            callback.apply(this, args)
+        }, limit)
+    }
+}
+
+
+document.addEventListener('keydown',(e)=>{
+    // if(e.key===' '){
+    //     nextStep();
+    // }
+});
+
+window.addEventListener('resize',(e)=>{
+    debounce(update)(e);
+});
+
 const display = document.getElementById('display');
 const ctx = display.getContext('2d');
 
@@ -89,6 +110,8 @@ function update(){
         ctx.fill(pointer);
 
     }
+
+    document.getElementById('stepView').innerText=`Step ${machine.step}`;
 }
 
 

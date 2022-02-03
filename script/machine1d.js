@@ -12,6 +12,7 @@ class turingMachine{
         this.ruleset=ruleset;
         this.tape=tape;
         this.state=0;
+        this.step=0;
     }
 
     next(n=1){
@@ -26,6 +27,7 @@ class turingMachine{
                     break;
                 }
             }
+            this.step++;
         }
     }
 }

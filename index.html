@@ -12,6 +12,7 @@
         <button onclick="resetStep(event)">PREV</button>
         <button onclick="nextStep(event)">NEXT</button>
         <input type="range" min="0" max="100" value="0" step="0.05" onmousemove="view.offset=Number(event.target.value);update();">
+        <span id="stepView">Step 0</span>
     </nav>
     <canvas id="display"></canvas>
     <div class="box">
@@ -27,6 +28,9 @@
             </ul>
         </div>
     </div>
+<!--    <div class="box">
+        <h3>금단의 영역</h3>
+    </div>-->
     <script src="script/machine1d.js"></script>
     <script src="script/ui.js"></script>
 </body>
